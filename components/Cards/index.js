@@ -39,7 +39,7 @@ function cards(data) {
         img.src = data.authorPhoto
         
     let span = document.createElement(`span`)
-        span,textContent = data.authorName
+        span.textContent = data.authorName
 
         card.appendChild(headline)
         card.appendChild(author)
