@@ -46,7 +46,7 @@ So we could use Array specific feature on it like .map(),.reduce() etc.
 
 5. What is a component?
 
-A component is efficient dry code that is reusable and is made up of several parts which often include HTML,CSS, and JS.  
+A component is efficient dry code that is reusable and is often made up of several parts which often include HTML,CSS, and JS.  
 
 
 ### Git Set up
