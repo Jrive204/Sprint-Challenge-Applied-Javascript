@@ -23,11 +23,11 @@ let carouseldiv = document.createElement(`div`)
 
 let lftbtn = document.createElement(`div`)
     lftbtn.classList.add(`left-button`)
-    // lftbtn.textContent = `Hello`
 
 let imgone = document.createElement(`img`)
     imgone.src = "./assets/carousel/mountains.jpeg"
-    // imgone.style = `display:block`
+    imgone.style = `display:block`
+
 let imgtwo = document.createElement(`img`)
     imgtwo.src = `./assets/carousel/computer.jpeg`
 let imgthree = document.createElement(`img`)
@@ -40,7 +40,7 @@ let rghtbtn = document.createElement(`div`)
 
 
 let imgarr = [imgone,imgtwo,imgthree,imgfour]
-
+console.log(imgarr[imgarr.length-1])
 imgindex = 0;
 
 moveCarousel = (num) =>{
@@ -54,17 +54,36 @@ moveCarousel = (num) =>{
   if (imgindex > imgarr.length - 1){
     imgindex = 0
   }
+  
   if(imgindex < 0 ){
-    imgindex = imgarr.length -1;
+    imgindex = imgarr.length -1 ;
   }
   else{
     imgarr[imgindex].style = `display:block`
   }
 
 }
+moveCarouselreverse = (num) =>{
+
+  for(const imgs of imgarr){
+     imgs.style = `display:none`;
+  }
+  
+   imgindex += num;
+ if(imgindex < 0 ){
+     imgindex = imgarr.length -1 ;
+   }
+   if (imgindex > imgarr.length - 1){
+     imgindex = 0
+   }    
+   else{
+     imgarr[imgindex].style = `display:block`
+   }
+ 
+ }
 
 lftbtn.addEventListener("click", () => {
-  moveCarousel(-1);
+  moveCarouselreverse( -1 );
 });
 
 rghtbtn.addEventListener(`click`, () =>{
