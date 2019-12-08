@@ -52,11 +52,11 @@ function cards(data) {
 
 axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 .then(response => {    
-    console.log(response.data)
+    // console.log(response.data)
 let data = response.data.articles
 
 for(let key in data){
-    console.log(`${key} = ${data[key]}`)
+    // console.log(`${key} = ${data[key]}`)
     data[key].forEach(element => {
         let cardentry = document.querySelector(`.cards-container`)
         cardentry.appendChild(cards(element))

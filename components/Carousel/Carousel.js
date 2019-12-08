@@ -17,7 +17,7 @@
     <div class="right-button"> > </div>
   </div>
 */
-function Carousel(data){
+function Carousel () {
 let carouseldiv = document.createElement(`div`)
   carouseldiv.classList.add(`carousel`)
 
@@ -25,33 +25,91 @@ let lftbtn = document.createElement(`div`)
     lftbtn.classList.add(`left-button`)
 
 let imgone = document.createElement(`img`)
-    imgone.src = `./assets/carousel/mountains.jpeg`
+    imgone.src = "./assets/carousel/mountains.jpeg"
+    imgone.style = `display:block`
+
 let imgtwo = document.createElement(`img`)
     imgtwo.src = `./assets/carousel/computer.jpeg`
 let imgthree = document.createElement(`img`)
     imgthree.src = `./assets/carousel/trees.jpeg`
 let imgfour = document.createElement(`img`)
     imgfour.src = `./assets/carousel/turntable.jpeg`
-// let imgfive = document.createElement(`img`)
-//     imgfive.src = `./assets/carousel/turntable.jpeg`
 
 let rghtbtn = document.createElement(`div`)
     rghtbtn.classList.add(`right-button`)
 
-    // carouseldiv.append(lftbtn,imgone,imgtwo,imgthree,imgfour)
-    carouseldiv.appendChild(lftbtn)
-    carouseldiv.appendChild(imgone)
-    carouseldiv.appendChild(imgtwo)
-    carouseldiv.appendChild(imgthree)
-    carouseldiv.appendChild(imgfour)
-    // carouseldiv.appendChild(imgfive)
-    carouseldiv.appendChild(rghtbtn)
 
-    
-    return carouseldiv
+let imgarr = [imgone,imgtwo,imgthree,imgfour]
+console.log(imgarr[imgarr.length-1])
+imgindex = 0;
 
+moveCarousel = (num) =>{
+
+ for(const imgs of imgarr){
+    imgs.style = `display:none`;
+ }
+ 
+  imgindex += num;
+
+  if (imgindex > imgarr.length - 1){
+    imgindex = 0
+  }
+  
+  if(imgindex < 0 ){
+    imgindex = imgarr.length -1 ;
+  }
+  else{
+    imgarr[imgindex].style = `display:block`
+  }
 
 }
+moveCarouselreverse = (num) =>{
+
+  for(const imgs of imgarr){
+     imgs.style = `display:none`;
+  }
+  
+   imgindex += num;
+ if(imgindex < 0 ){
+     imgindex = imgarr.length -1 ;
+   }
+   if (imgindex > imgarr.length - 1){
+     imgindex = 0
+   }    
+   else{
+     imgarr[imgindex].style = `display:block`
+   }
+ 
+ }
+
+lftbtn.addEventListener("click", () => {
+  moveCarouselreverse( -1 );
+});
+
+rghtbtn.addEventListener(`click`, () =>{
+  moveCarousel(1);
+})
+
+    
+
+carouseldiv.appendChild(lftbtn)
+carouseldiv.appendChild(imgone)
+carouseldiv.appendChild(imgtwo)
+carouseldiv.appendChild(imgthree)
+carouseldiv.appendChild(imgfour)
+carouseldiv.appendChild(rghtbtn)
+
+
+
+
+    
+return carouseldiv
+
+}
+// let showimg = document.querySelectorAll(`.carousel img`)
+// // console.log(`Hello`)
+// console.log(showimg)
+// // console.log(Carousel())
 
 let carouselentry = document.querySelector(`.carousel-container`)
-    carouselentry.appendChild(Carousel(data))
+    carouselentry.appendChild(Carousel())
