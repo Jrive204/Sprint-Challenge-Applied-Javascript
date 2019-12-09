@@ -40,53 +40,71 @@ let rghtbtn = document.createElement(`div`)
 
 
 let imgarr = [imgone,imgtwo,imgthree,imgfour]
-console.log(imgarr[imgarr.length-1])
+// console.log(imgarr[imgarr.length-1])
 imgindex = 0;
 
 moveCarousel = (num) =>{
 
- for(const imgs of imgarr){
+  for(const imgs of imgarr){
     imgs.style = `display:none`;
  }
  
   imgindex += num;
 
   if (imgindex > imgarr.length - 1){
-    imgindex = 0
+      imgindex = 0
   }
   
   if(imgindex < 0 ){
     imgindex = imgarr.length -1 ;
   }
   else{
-    imgarr[imgindex].style = `display:block`
+    imgarr[imgindex].style.display = `block`
   }
+  console.log(imgindex)
+
+ 
+
 
 }
-moveCarouselreverse = (num) =>{
-
+moveCarouselreverse = (num) =>  {
+  
+  var inx = setInterval(function () {
   for(const imgs of imgarr){
      imgs.style = `display:none`;
   }
   
    imgindex += num;
- if(imgindex < 0 ){
-     imgindex = imgarr.length -1 ;
-   }
+   
+
+  if(imgindex < 0 ){
+    imgindex = imgarr.length-1 ;
+  }
    if (imgindex > imgarr.length - 1){
      imgindex = 0
    }    
-   else{
-     imgarr[imgindex].style = `display:block`
-   }
+   else { 
+    
+    imgarr[imgindex].style = `display:block`
+    console.log(imgindex)  
+    
+    
+         
+     
+   }}, 1000)
+    
+    //  console.log(imgindex)
+   
+   
  
  }
 
 lftbtn.addEventListener("click", () => {
   moveCarouselreverse( -1 );
+ 
 });
 
-rghtbtn.addEventListener(`click`, () =>{
+rghtbtn.addEventListener(`click`, () => {
   moveCarousel(1);
 })
 
